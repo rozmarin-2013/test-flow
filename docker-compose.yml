@@ -35,20 +35,18 @@ services:
             - app-network
 
     #MySQL
-    db:
-        image: mysql:5.7.22
-        container_name: db
-        restart: unless-stopped
-        tty: true
-        ports:
-            - "3307:3307"
+    db_flow:
+        container_name: db_flow
+        image: mysql:8.0
         environment:
-            MYSQL_DATABASE: laravel
-            MYSQL_ROOT_PASSWORD: password
-            SERVICE_TAGS: dev
-            SERVICE_NAME: mysql
+            MYSQL_DATABASE: flow
+            MYSQL_USER: flow
+            MYSQL_PASSWORD: flow
+            MYSQL_ROOT_PASSWORD: root
         volumes:
-            - ./docker/mysql:/var/lib/mysql/
+            - ./docker/mysql:/var/lib/mysql
+        ports:
+            - "3307:3306"
         networks:
             - app-network
 
