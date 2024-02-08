@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Film extends Model implements ImageableInterface
@@ -32,5 +33,10 @@ class Film extends Model implements ImageableInterface
     public function image(): MorphOne
     {
         return $this->morphOne(ImageFilm::class, 'imageable');
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(CommentFilm::class);
     }
 }
