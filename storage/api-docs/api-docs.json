@@ -1,0 +1,244 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "News Documentation",
+        "description": "news api",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8989",
+            "description": "local server"
+        }
+    ],
+    "paths": {
+        "/api/author/top": {
+            "get": {
+                "description": "Get all articles for given author",
+                "operationId": "67803fbee57dd3a207c7a8029788f3ce",
+                "responses": {
+                    "200": {
+                        "description": "Get all articles for given author",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "name"
+                                                    },
+                                                    "news_count": {
+                                                        "type": "integer",
+                                                        "example": "10"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/author/{author}/news": {
+            "get": {
+                "description": "Get all articles for given author",
+                "operationId": "76b7d2f1c8f503e19a196c9d16783451",
+                "parameters": [
+                    {
+                        "name": "author",
+                        "in": "path",
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Not found author",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\Models\\Author] 1000"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Get all articles for given author.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "title"
+                                                    },
+                                                    "text": {
+                                                        "type": "text",
+                                                        "example": "text"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "links": {
+                                            "properties": {
+                                                "first": {
+                                                    "type": "string",
+                                                    "example": "http://localhost:8989/api/author/1/news?page=1"
+                                                },
+                                                "last": {
+                                                    "type": "string",
+                                                    "example": "http://localhost:8989/api/author/1/news?page=1"
+                                                },
+                                                "prev": {
+                                                    "type": "integer",
+                                                    "example": null
+                                                },
+                                                "next": {
+                                                    "type": "integer",
+                                                    "example": null
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "meta": {
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "from": {
+                                                    "type": "integer",
+                                                    "example": null
+                                                },
+                                                "last_page": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "links": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "url": {
+                                                                "type": "string",
+                                                                "example": null
+                                                            },
+                                                            "active": {
+                                                                "type": "boolean",
+                                                                "example": false
+                                                            },
+                                                            "label": {
+                                                                "type": "string",
+                                                                "example": "Next &raquo;"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/news/{news}": {
+            "get": {
+                "description": "Get article by some id",
+                "operationId": "4c09fa11f86d11aa99aefdc9f85c1237",
+                "parameters": [
+                    {
+                        "name": "news",
+                        "in": "path",
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Not found article by some id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\Models\\News] 100"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Get article by some id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "name"
+                                                    },
+                                                    "text": {
+                                                        "type": "text",
+                                                        "example": "text"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2024-02-10T06:01:15.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::controller(\App\Http\Controllers\NewsController::class)->group(function () {
+    Route::get('/news/{news}', 'show');
+});
+
+Route::controller(\App\Http\Controllers\AuthorNewsController::class)->group(function () {
+    Route::get('/author/{author}/news', 'show');
+});
+
+Route::controller(\App\Http\Controllers\AuthorController::class)->group(function () {
+    Route::get('/author/top', 'top');
+});
