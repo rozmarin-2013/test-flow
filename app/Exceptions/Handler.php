@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Symfony\Component\HttpFoundation\Response;
 
 class Handler extends ExceptionHandler
 {
@@ -26,5 +27,17 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e): Response
+    {
+        if ($request->isJson()) {
+            return response(
+                ['error' => $e->getMessage()],
+                (int)$e->getCode() ? $e->getCode() : 400
+            );
+        } else {
+            return parent::render($request, $e);
+        }
     }
 }

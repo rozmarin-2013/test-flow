@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -8,7 +8,12 @@ use Illuminate\Routing\Controller as BaseController;
 
 use OpenApi\Attributes as OA;
 
-class Controller extends BaseController
+
+#[
+    OA\Info(version: "1.0.0", description: "news api", title: "News Documentation"),
+    OA\Server(url: 'http://localhost:8989', description: "local server"),
+]
+class ApiController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 }
