@@ -1,6 +1,6 @@
 This is simple news article api, complete with MySQL database, PHP API.
 
-This API was created with Laravel 10.
+This Project was created with Laravel 10.
 
 ### To deploy the project follow these steps:
 1. Clone repositorium:
@@ -19,8 +19,11 @@ and seeds, create swager documentation):
 $ make init
 ```
 4. The api will be available via the link http://localhost:8989/
+
 5. Swagger documentation with all available endpoints is on page http://localhost:8989/api/documentation#/default/76b7d2f1c8f503e19a196c9d16783451
 ###
+
+6. UI for List all Authors you can search by http://localhost:8989/authors
 
 To run the project later, run the command
 ```sh
