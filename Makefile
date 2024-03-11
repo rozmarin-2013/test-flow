@@ -26,3 +26,5 @@ swagger:
 cs-fix:
 	${DCEXEC} ${APP} composer phpcs
 
+psalm:
+	${DCEXEC} ${APP} composer psalm

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\AuthorTopResource;
 use App\Service\AuthorTopService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use OpenApi\Attributes as OA;
 
-class AuthorController extends Controller
+class AuthorController extends ApiController
 {
     public function __construct(private readonly AuthorTopService $authorTopService)
     {

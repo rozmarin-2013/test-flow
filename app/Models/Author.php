@@ -10,6 +10,8 @@ class Author extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function news(): BelongsToMany
     {
         return $this->belongsToMany(News::class, 'author_news', 'author_id');

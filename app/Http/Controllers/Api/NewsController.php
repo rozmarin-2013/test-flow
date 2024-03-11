@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\NewsResource;
 use App\Models\News;
 use OpenApi\Attributes as OA;
 
-class NewsController extends Controller
+class NewsController extends ApiController
 {
     #[OA\Get(
         path: '/api/news/{news}',

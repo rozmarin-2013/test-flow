@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\NewsResource;
 use App\Models\Author;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use OpenApi\Attributes as OA;
 
-class AuthorNewsController extends Controller
+class AuthorNewsController extends ApiController
 {
     #[OA\Get(
         path: '/api/author/{author}/news',
