@@ -20,3 +20,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::resource('tasks', \App\Http\Controllers\TaskController::class);
+
+Route::post('login',[\App\Http\Controllers\User\UserAuthController::class,'login']);
+
+Route::get('goods',\App\Http\Controllers\Good\GoodController::class);
+
+Route::middleware('auth:sanctum')->group( function () {
+    Route::post('balance/add',[\App\Http\Controllers\Balance\BalanceController::class,'add']);
+    Route::post('basket/add',[\App\Http\Controllers\Basket\BasketController::class,'add']);
+    Route::delete('basket/delete/{good}',[\App\Http\Controllers\Basket\BasketController::class,'delete']);
+    Route::post('order/create',[\App\Http\Controllers\Order\OrderController::class,'create']);
+    Route::delete('order/delete/{order}',[\App\Http\Controllers\Order\OrderController::class,'delete']);
+});
